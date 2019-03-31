@@ -10,12 +10,12 @@ import * as serviceWorker from "./serviceWorker";
 ReactDOM.render(
   <Router>
     <Fragment>
-      <nav className="nav justify-content-center">
-        <Link className="nav-link" to="/" title="Home">
+      <nav className=" navbar navbar-dark bg-primary m-1" >
+        <Link className="nav-item" to="/" title="Home">
           Home
         </Link>
         <Link
-          className="nav-link"
+          className="nav-item"
           to="/Admin"
           title="Admin"
         >
