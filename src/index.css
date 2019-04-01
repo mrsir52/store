@@ -16,3 +16,12 @@ code {
 .nav-item {
   color: white;
 }
+
+.carousel-item {
+  width: 30%;
+  align-self: auto; 
+}
+
+.carousel-control-prev-icon {
+color: black;
+}
