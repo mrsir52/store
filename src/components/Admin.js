@@ -40,7 +40,7 @@ class Admin extends Component {
           <section className="card-deck mb-3 text-center card w-25 ">
           <section className="card mb-4 shadow-sm">
             <div className="card-header">
-              <h4>{ person.name } {person.lastName}</h4>
+              <h4 key="person._id">{ person.name } {person.lastName}</h4>
             </div>
             <div className="card-body">
               <h1>{person.facts}</h1>
