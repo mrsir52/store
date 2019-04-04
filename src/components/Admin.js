@@ -11,7 +11,7 @@ class Admin extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const data = JSON.stringify({ ...this.state });
+    const data = JSON.stringify({ ...this.state});
     fetch("http://localhost:4000", {
       method: "POST",
       body: data,
@@ -22,6 +22,8 @@ class Admin extends Component {
       //this will refresh the window once you hit submit
       .then(() => window.location.reload(true));
   };
+
+onChange = e => this.setState({ [e.target.name]: e.target.value })
 
   componentDidMount() {
     return fetch("http://localhost:4000")
@@ -36,10 +38,10 @@ class Admin extends Component {
   render() {
     const myList = this.state.info.map(person => {
       return (
-        <div className="container d-flex justify-content-end">
+        <div className="container d-flex justify-content-end" >
           <section className="card-deck mb-3 text-center card w-25 ">
           <section className="card mb-4 shadow-sm">
-            <div className="card-header">
+            <div className="card-header" >
               <h4 key="person._id">{ person.name } {person.lastName}</h4>
             </div>
             <div className="card-body">
@@ -65,11 +67,13 @@ class Admin extends Component {
             <input
               type="text"
               className="form-control"
+              name="firstName"
               id="exampleInput"
               placeholder="Enter Name"
               // the onchange uses an event listener to set state "name" and uses
               // e.target.value to take the input from the form and set that to state
-              onChange={e => this.setState({ name: e.target.value })}
+              onChange={this.onChange}
+              // e => this.setState({ name: e.target.value })
             />
           </div>
           <div className="form-group">
@@ -77,11 +81,13 @@ class Admin extends Component {
             <input
               type="text"
               className="form-control"
+              name="lastName"
               id="exampleInput"
               placeholder="Enter Name"
               // the onchange uses an event listener to set state "name" and uses
               // e.target.value to take the input from the form and set that to state
-              onChange={e => this.setState({ lastName: e.target.value })}
+              onChange={this.onChange}
+              // e => this.setState({ lastName: e.target.value })
             />
           </div>
           <div className="form-group">
@@ -89,11 +95,13 @@ class Admin extends Component {
             <input
               type="text"
               className="form-control"
+              name="facts"
               id="exampleInput"
               placeholder="Enter additional info"
               // the onchange uses an event listener to set state "name" and uses
               // e.target.value to take the input from the form and set that to state
-              onChange={e => this.setState({ facts: e.target.value })}
+              onChange={this.onChange}
+              // e => this.setState({ facts: e.target.value })
             />
           </div>
 
