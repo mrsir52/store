@@ -3,8 +3,23 @@ import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/Home'
 import Admin from './components/Admin'
 
+
 export class Routing extends Component {
+state = {
+  info: []
+}
+
+    componentDidMount() {
+        return fetch("http://localhost:4000")
+          .then(results => {
+            return results.json();
+          })
+          .then(data => {
+            this.setState({ info: data });
+          });
+      }
   render() {
+      
     return (
       <div>
         <Router>
