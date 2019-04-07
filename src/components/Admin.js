@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../index.css"
 
 
 class Admin extends Component {
@@ -8,6 +9,7 @@ class Admin extends Component {
     inventory: []
 
   };
+
 
   handleSubmit = async e => {
     const url = "http://localhost:4000/inventory"
@@ -40,21 +42,23 @@ onChange = e => this.setState({ [e.target.name]: e.target.value })
   }
 
   render() {
-    const myInventory = this.state.inventory.map(item => {
+    const myInventory = this.state.inventory.map(({name, color, _id, link}) => {
       return (
-        <div className="container d-flex justify-content-end" >
-          <section className="card-deck mb-3 text-center card w-25 ">
-          <section className="card mb-4 shadow-sm">
-            <div className="card-header" >
-              <h4 >{ item.name } </h4>
-            </div>
-            <div className="card-body">
-              <h1>{item.color}</h1>
-              <button>Buy Now</button>
+        
+        <div className="col-sm-4">
+          <section className="card-deck ">
+          <section className="card mb-4">
+          <h5 className="card-header text-center">{name}</h5>
+          <img src={link} className="card-img-top " alt="scuba mask"></img>
+            <div className="card-body text-center">
+            <p className="cart-text ">Short description here</p>
+            <a href="#" className="btn btn-primary m-1 ">edit</a>
+            <a href="#" className="btn btn-danger m-1">delete</a>
             </div>
           </section>
           </section>
-        </div>
+          </div>
+
       )
     })
     //this will show you state and see the data put into "info"
@@ -91,36 +95,33 @@ onChange = e => this.setState({ [e.target.name]: e.target.value })
               onChange={this.onChange}
               // e => this.setState({ lastName: e.target.value })
             />
-          </div>
-          {/* <div className="form-group">
-            <label htmlFor="exampleInput">Additional Facts</label>
+             <label htmlFor="exampleInput">Image Address</label>
             <input
               type="text"
               className="form-control"
-              name="facts"
+              name="link"
               id="exampleInput"
-              placeholder="Enter additional info"
+              placeholder="Enter Image Address"
               // the onchange uses an event listener to set state "name" and uses
               // e.target.value to take the input from the form and set that to state
               onChange={this.onChange}
-              // e => this.setState({ facts: e.target.value })
+              // e => this.setState({ lastName: e.target.value })
             />
-          </div> */}
-
+          </div>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
 
-          <div>
-            {/* within {} we can call our map function to display our data that has been mapped */}
-            <div>
-            {/* {myList} */}
-            </div>
-           <section>
-             {myInventory}
+          
+        </form>
+        <div>
+           <section className="container">
+           <div className="row">
+{myInventory}
+           </div>
+             
            </section>
           </div>
-        </form>
       </div>
     );
   }

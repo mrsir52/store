@@ -25,3 +25,12 @@ code {
 .carousel-control-prev-icon {
 color: black;
 }
+
+.card-img-top {
+width: 70%;
+align-content: center
+}
+
+.card {
+  align-items: center
+}
