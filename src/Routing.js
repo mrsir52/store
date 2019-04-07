@@ -9,15 +9,7 @@ state = {
   info: []
 }
 
-    componentDidMount() {
-        return fetch("http://localhost:4000")
-          .then(results => {
-            return results.json();
-          })
-          .then(data => {
-            this.setState({ info: data });
-          });
-      }
+    
   render() {
       
     return (

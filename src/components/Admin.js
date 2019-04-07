@@ -4,15 +4,19 @@ import React, { Component } from 'react';
 class Admin extends Component {
   state = {
     name: "",
-    lastName: "",
-    facts: "",
-    info: []
+    color: "",
+    inventory: []
+
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const data = JSON.stringify({ ...this.state});
-    fetch("http://localhost:4000", {
+  handleSubmit = async e => {
+    const url = "http://localhost:4000/inventory"
+    const data = JSON.stringify({
+      name: this.state.name,
+      color: this.state.color
+    })
+    await e.preventDefault();
+    fetch(url, {
       method: "POST",
       body: data,
       headers: {
@@ -26,38 +30,36 @@ class Admin extends Component {
 onChange = e => this.setState({ [e.target.name]: e.target.value })
 
   componentDidMount() {
-    return fetch("http://localhost:4000")
+    return fetch("http://localhost:4000/inventory")
       .then(results => {
         return results.json();
       })
       .then(data => {
-        this.setState({ info: data });
+        this.setState({ inventory: data });
       });
   }
 
   render() {
-    const myList = this.state.info.map(person => {
+    const myInventory = this.state.inventory.map(item => {
       return (
         <div className="container d-flex justify-content-end" >
           <section className="card-deck mb-3 text-center card w-25 ">
           <section className="card mb-4 shadow-sm">
             <div className="card-header" >
-              <h4 key="person._id">{ person.name } {person.lastName}</h4>
+              <h4 >{ item.name } </h4>
             </div>
             <div className="card-body">
-              <h1>{person.facts}</h1>
+              <h1>{item.color}</h1>
               <button>Buy Now</button>
             </div>
           </section>
-         
-         
           </section>
         </div>
-      );
-    });
+      )
+    })
     //this will show you state and see the data put into "info"
     //you can remove the console log, this is just to see the state initially
-    console.log("info:", this.state.info);
+    console.log("info:", this.state.inventory);
     return (
       <div>
         <h2>From Admin</h2>
@@ -67,7 +69,7 @@ onChange = e => this.setState({ [e.target.name]: e.target.value })
             <input
               type="text"
               className="form-control"
-              name="firstName"
+              name="name"
               id="exampleInput"
               placeholder="Enter Name"
               // the onchange uses an event listener to set state "name" and uses
@@ -77,20 +79,20 @@ onChange = e => this.setState({ [e.target.name]: e.target.value })
             />
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInput">Last Name</label>
+            <label htmlFor="exampleInput">Color</label>
             <input
               type="text"
               className="form-control"
-              name="lastName"
+              name="color"
               id="exampleInput"
-              placeholder="Enter Name"
+              placeholder="Enter Color"
               // the onchange uses an event listener to set state "name" and uses
               // e.target.value to take the input from the form and set that to state
               onChange={this.onChange}
               // e => this.setState({ lastName: e.target.value })
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="exampleInput">Additional Facts</label>
             <input
               type="text"
@@ -103,18 +105,20 @@ onChange = e => this.setState({ [e.target.name]: e.target.value })
               onChange={this.onChange}
               // e => this.setState({ facts: e.target.value })
             />
-          </div>
+          </div> */}
 
-          <button type="submit" classname="btn btn-primary">
+          <button type="submit" className="btn btn-primary">
             Submit
           </button>
 
           <div>
             {/* within {} we can call our map function to display our data that has been mapped */}
             <div>
-            {myList}
+            {/* {myList} */}
             </div>
-           
+           <section>
+             {myInventory}
+           </section>
           </div>
         </form>
       </div>
