@@ -43,16 +43,18 @@ class Home extends Component {
     const myList = this.state.inventory.map(({ name, color, _id, link }) => {
       return (
         <div className="col-sm-4">
-          <section className="card-deck ">
+          <section className="card-deck">
             <section className="card mb-4">
               <h5 className="card-header ">{name}</h5>
               <img src={link} className="card-img-top" alt="scuba mask" />
               <div className="card-body">
                 <p className="cart-text ">Short description here</p>
-                
+                <section className="d-flex justify-content-center">
                 <button className="btn btn-primary" onClick={e => this.addToInventory(e, _id, name, color, link)}>
                   Add To Cart
                 </button>
+                </section>
+                
 
               </div>
             </section>
@@ -62,7 +64,7 @@ class Home extends Component {
     });
     return (
       <div>
-        <section className="container">
+        <section className="container text-align-center">
           <div className="row">{myList}</div>
         </section>
       </div>
