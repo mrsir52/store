@@ -10,16 +10,16 @@ export class Cart extends Component {
     
       };
 
-    // componentDidMount() {
-    //     const url = "http://localhost:4000/cart";
-    //     return fetch(url)
-    //       .then(results => {
-    //         return results.json();
-    //       })
-    //       .then(data => {
-    //         this.setState({ cart: data });
-    //       });
-    //   }
+    componentDidMount() {
+        const url = "http://localhost:4000/cart";
+        return fetch(url)
+          .then(results => {
+            return results.json();
+          })
+          .then(data => {
+            this.setState({ cart: data });
+          });
+      }
 
   render() {
     const myCart = this.state.cart.map(({name, color, _id, link}) => {

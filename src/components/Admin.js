@@ -11,34 +11,34 @@ class Admin extends Component {
     inventory: []
   };
 
-  updateInventory = async (e, _id, name, color, link, description) => {
-    const id = this.state.id
-    const url = "http://localhost:4000/inventory/" + {id};
+  // updateInventory = async (e, _id, name, color, link, description) => {
+  //   const id = this.state.id
+  //   const url = "http://localhost:4000inventory/" + {id};
 
-    const data = JSON.stringify({
-      // _id: _id,
-      // name: name,
-      // color: color,
-      // link: link,
-      // description: description
-      id: this.state.id,
-      name: this.state.name,
-      color: this.state.color,
-      link: this.state.link,
-      description: this.state.description
-    });
-    console.log("data", data);
-    e.preventDefault();
-    await fetch(url, {
-      method: "PUT",
-      body: data,
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    //this will refresh the window once you hit submit
-    //.then(() => window.location.reload(true));
-  };
+  //   const data = JSON.stringify({
+  //     // _id: _id,
+  //     // name: name,
+  //     // color: color,
+  //     // link: link,
+  //     // description: description
+  //     id: this.state.id,
+  //     name: this.state.name,
+  //     color: this.state.color,
+  //     link: this.state.link,
+  //     description: this.state.description
+  //   });
+  //   console.log("data", data);
+  //   e.preventDefault();
+  //   await fetch(url, {
+  //     method: "PUT",
+  //     body: data,
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     }
+  //   });
+  //   //this will refresh the window once you hit submit
+  //   //.then(() => window.location.reload(true));
+  // };
 
   deleteFromInventory = async (e, _id, name, color, link) => {
     const url = "http://localhost:4000/inventory";
@@ -81,15 +81,15 @@ class Admin extends Component {
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
-//   componentDidMount() {
-//     return fetch("http://localhost:4000/inventory")
-//       .then(results => {
-//         return results.json();
-//       })
-//       .then(data => {
-//         this.setState({ inventory: data });
-//       });
-//   }
+  componentDidMount() {
+    return fetch("http://localhost:4000/inventory")
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        this.setState({ inventory: data });
+      });
+  }
 
   render() {
     const myInventory = this.state.inventory.map(
@@ -105,14 +105,14 @@ class Admin extends Component {
                   <p className="cart-text ">{description}</p>
                   <p>{_id}</p>
                   <section className="d-flex justify-content-center">
-                    <button
+                    {/* <button
                       type="button"
                       class="btn btn-primary"
                       data-toggle="modal"
                       data-target="#exampleModal"
                     >
                       Launch demo modal
-                    </button>
+                    </button> */}
                     <button
                       className="btn btn-primary m-1"
                       onClick={e =>
@@ -147,7 +147,7 @@ class Admin extends Component {
 
         {/* Start of Form section */}
         <section className="text-align-center mb-4">
-          <form className="align-center" onSubmit={this.updateInventory}>
+          <form className="align-center" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label htmlFor="exampleInput">Name</label>
               <input

@@ -1,25 +1,24 @@
 import React, { Component } from "react";
-import { redirect } from "react-router"
-import {decode} from "jsonwebtoken"
+import { Redirect } from "react-router"
 
 
 export class Login extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       email: "",
-//       password: "",
-//       token: "",
-//       user: undefined
-//     };
-//   }
-
-    state = {
-        email: "",
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
       password: "",
       token: "",
       user: undefined
-    }
+    };
+  }
+
+    // state = {
+    //     email: "",
+    //   password: "",
+    //   token: "",
+    //   user: null
+    // }
 
   onChange = e => {
     this.setState({
@@ -29,7 +28,7 @@ export class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:4000/api/users/login", {
+    fetch("http://localhost:4000/login", {
       method: "POST",
       //mode: "cors",
       body: JSON.stringify({
@@ -41,21 +40,18 @@ export class Login extends Component {
       }
     })
     .then((response) => response.json())
-//     .then((data) => {
-//         localStorage.setItem("jwt", data.token)
-//         console.log(data)
-        
-        
-//         // if (this.state.user !== undefined) {
-//         //   this.props.history.push('/Cart')
-//         // } else {
-//         //   this.props.history.push('/Admin')
-//         // }
-//    })
-   .then((data) => {
-    const decoded = data.decode(data.token, {complete: true});
-console.log(decoded.header);
-console.log(decoded.payload)
+    .then((data) => {
+        localStorage.setItem("token", data.token)
+        console.log(data)
+        const user = data.token;
+        this.setState({
+          user
+        })
+        if (this.state.user !== undefined) {
+            this.props.history.push('/Admin')
+          } else {
+            this.props.history.push('/Login')
+          }
    })
   };
 
