@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../index.css";
 
-class Admin extends Component {
+class Inventory extends Component {
   state = {
     name: "",
     id: "",
@@ -231,4 +231,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default Inventory;

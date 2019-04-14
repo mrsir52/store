@@ -48,6 +48,7 @@ class Home extends Component {
               <h5 className="card-header ">{name}</h5>
               <img src={link} className="card-img-top" alt="scuba mask" />
               <div className="card-body">
+              <p>{color}</p>
                 <p className="cart-text ">Short description here</p>
                 <section className="d-flex justify-content-center">
                 <button className="btn btn-primary" onClick={e => this.addToInventory(e, _id, name, color, link)}>

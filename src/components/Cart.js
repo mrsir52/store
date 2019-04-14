@@ -10,16 +10,16 @@ export class Cart extends Component {
     
       };
 
-    componentDidMount() {
-        const url = "http://localhost:4000/cart";
-        return fetch(url)
-          .then(results => {
-            return results.json();
-          })
-          .then(data => {
-            this.setState({ cart: data });
-          });
-      }
+    // componentDidMount() {
+    //     const url = "http://localhost:4000/cart";
+    //     return fetch(url)
+    //       .then(results => {
+    //         return results.json();
+    //       })
+    //       .then(data => {
+    //         this.setState({ cart: data });
+    //       });
+    //   }
 
   render() {
     const myCart = this.state.cart.map(({name, color, _id, link}) => {
@@ -30,6 +30,7 @@ export class Cart extends Component {
                 <h5 className="card-header text-center">{name}</h5>
                 <img src={link} className="card-img-top " alt="scuba mask" />
                 <div className="card-body">
+                <p>{color}</p>
                   <p className="cart-text">Short description here</p>
                 </div>
               </section>
