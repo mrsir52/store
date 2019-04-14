@@ -3,22 +3,22 @@ import { Redirect } from "react-router"
 
 
 export class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       email: "",
+//       password: "",
+//       token: "",
+//       user: undefined
+//     };
+//   }
+
+    state = {
+        email: "",
       password: "",
       token: "",
       user: undefined
-    };
-  }
-
-    // state = {
-    //     email: "",
-    //   password: "",
-    //   token: "",
-    //   user: null
-    // }
+    }
 
   onChange = e => {
     this.setState({
