@@ -28,9 +28,7 @@ state = {
               <Link className="nav-item" to="/Cart" title="Cart">
                 Cart
               </Link>
-              <Link className="nav-item" to="/Admin" title="Admin">
-                Admin
-              </Link>
+
               <Link className="nav-item" to="/Login" title="Login">
                 Login
               </Link>
@@ -40,8 +38,9 @@ state = {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/Cart" component={Cart} />
-                <Route exact path="/Login" component={Login} />
+                
                 <AuthenticatedComponent >
+                <Route exact path="/Login" component={Login} />
                   <Route exact path="/Admin" component={Admin} /> 
                 </AuthenticatedComponent>
                 

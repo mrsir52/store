@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router"
-
+import getJWT from './helpers/jwt'
 
 export class Login extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       email: "",
-//       password: "",
-//       token: "",
-//       user: undefined
-//     };
-//   }
-
     state = {
         email: "",
       password: "",
       token: "",
       user: undefined
     }
+
+componentDidMount() {
+    const jwt = getJWT();
+    if(!jwt) {
+        this.props.history.push('/Login')
+    } else {
+      this.props.history.push('/Admin')
+    }
+}
+
 
   onChange = e => {
     this.setState({
