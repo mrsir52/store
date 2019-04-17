@@ -1,5 +1,5 @@
 const getJWT = () => {
-    return localStorage.getItem('token')
+    return localStorage.getItem('user')
 }
 
 export default getJWT

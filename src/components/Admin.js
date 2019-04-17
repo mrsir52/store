@@ -59,7 +59,7 @@ class Admin extends Component {
   };
 
   handleSubmit = async e => {
-    const url = "http://localhost:4000/inventory";
+    const url = "http://localhost:4000/api/users/inventory";
     const data = JSON.stringify({
       name: this.state.name,
       color: this.state.color,

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router"
 import getJWT from './helpers/jwt'
+import jwt_decode from 'jwt-decode'
 
 export class Login extends Component {
     state = {
@@ -28,7 +29,7 @@ componentDidMount() {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:4000/login", {
+    fetch("http://localhost:5000/api/users/login", {
       method: "POST",
       //mode: "cors",
       body: JSON.stringify({
@@ -41,9 +42,12 @@ componentDidMount() {
     })
     .then((response) => response.json())
     .then((data) => {
-        localStorage.setItem("token", data.token)
+      const token = data.token
+      const decoded = jwt_decode(token)
+      
+        localStorage.setItem("user", [decoded.name, decoded.id])
         console.log(data)
-        const user = data.token;
+       const user = data.token;
         this.setState({
           user
         })
