@@ -11,34 +11,7 @@ class Admin extends Component {
     inventory: []
   };
 
-  // updateInventory = async (e, _id, name, color, link, description) => {
-  //   const id = this.state.id
-  //   const url = "http://localhost:4000inventory/" + {id};
 
-  //   const data = JSON.stringify({
-  //     // _id: _id,
-  //     // name: name,
-  //     // color: color,
-  //     // link: link,
-  //     // description: description
-  //     id: this.state.id,
-  //     name: this.state.name,
-  //     color: this.state.color,
-  //     link: this.state.link,
-  //     description: this.state.description
-  //   });
-  //   console.log("data", data);
-  //   e.preventDefault();
-  //   await fetch(url, {
-  //     method: "PUT",
-  //     body: data,
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     }
-  //   });
-  //   //this will refresh the window once you hit submit
-  //   //.then(() => window.location.reload(true));
-  // };
 
   deleteFromInventory = async (e, _id, name, color, link) => {
     const url = "http://localhost:4000/inventory";
