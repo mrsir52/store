@@ -78,14 +78,7 @@ class Admin extends Component {
                   <p className="cart-text ">{description}</p>
                   <p>{_id}</p>
                   <section className="d-flex justify-content-center">
-                    {/* <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                    >
-                      Launch demo modal
-                    </button> */}
+                   
                     <button
                       className="btn btn-primary m-1"
                       onClick={e =>
