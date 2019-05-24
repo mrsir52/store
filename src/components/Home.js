@@ -10,7 +10,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    const url = "http://localhost:4000/inventory";
+    const url = "http://localhost:4000/cart/";
     return fetch(url)
       .then(results => {
         return results.json();
@@ -55,8 +55,6 @@ class Home extends Component {
                   Add To Cart
                 </button>
                 </section>
-                
-
               </div>
             </section>
           </section>

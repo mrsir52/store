@@ -49,7 +49,7 @@ state = {
 
               </Switch>
             </div>
-          </div>
+          </Fragment>
         </Router>
       </div>
     );
