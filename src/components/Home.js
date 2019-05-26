@@ -35,8 +35,7 @@ class Home extends Component {
         "Content-Type": "application/json"
       }
     });
-    //this will refresh the window once you hit submit
-    // .then(() => window.location.reload(true));
+  
   };
 
   render() {
