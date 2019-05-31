@@ -103,8 +103,7 @@ class Admin extends Component {
         );
       }
     );
-    //this will show you state and see the data put into "info"
-    //you can remove the console log, this is just to see the state initially
+  
     console.log("info:", this.state.inventory);
     return (
       <div className="container">
